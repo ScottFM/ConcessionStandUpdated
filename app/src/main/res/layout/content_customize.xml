@@ -13,15 +13,6 @@
     tools:context="com.example.scott.concessionstand.Customize"
     tools:showIn="@layout/activity_customize">
 
-    <Button
-        android:text="Add an item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnAdd"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="176dp" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,4 +37,12 @@
         android:id="@+id/edtPrice"
         android:hint="Item price"
         android:textAlignment="center" />
+
+    <Button
+        android:text="Add an item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAdd"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
