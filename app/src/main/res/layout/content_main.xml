@@ -22,7 +22,8 @@
         android:layout_marginBottom="55dp"
         android:id="@+id/txt1"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center" />
 
     <GridLayout
         android:layout_width="wrap_content"
