@@ -10,14 +10,29 @@ import android.text.Editable;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Main extends AppCompatActivity {
+import org.w3c.dom.Text;
 
-    TextView tName;
-    TextView tPrice;
+import static com.example.scott.concessionstand.R.id.txtCandyQuantity;
+
+public class Main extends AppCompatActivity implements View.OnClickListener {
+
+    TextView hd;
+    TextView s;
+    TextView c;
+    Button btnHDm;
+    Button btnHDp;
+    Button btnSp;
+    Button btnSm;
+    Button btnCp;
+    Button btnCm;
+    int numHotDog = 0;
+    int numSoda = 0;
+    int numCandy = 0;
 
 
 
@@ -41,6 +56,12 @@ public class Main extends AppCompatActivity {
         String name = getIntent().getStringExtra("Name");
         float price = getIntent().getIntExtra("Price",0);
 
+        btnHDm.setOnClickListener(this);
+        btnHDp.setOnClickListener(this);
+        btnSm.setOnClickListener(this);
+        btnSp.setOnClickListener(this);
+        btnCm.setOnClickListener(this);
+        btnCp.setOnClickListener(this);
     }
 
     @Override
@@ -78,8 +99,15 @@ public class Main extends AppCompatActivity {
     }
 
     public void setUpItems() {
-        tName = (TextView) findViewById(R.id.txtName);
-        tPrice = (TextView) findViewById(R.id.txtPrice);
+        btnHDm = (Button) findViewById(R.id.btnHotDogMinus);
+        btnHDp = (Button) findViewById(R.id.btnHotDogPlus);
+        btnSm = (Button) findViewById(R.id.btnSodaMinus);
+        btnSp = (Button) findViewById(R.id.btnSodaPlus);
+        btnCm = (Button) findViewById(R.id.btnCandyMinus);
+        btnCp = (Button) findViewById(R.id.btnCandyPlus);
+        hd = (TextView) findViewById(R.id.txtHotDogQuantity);
+        s = (TextView) findViewById(R.id.txtSodaQuantity);
+        c = (TextView) findViewById(R.id.txtCandyQuantity);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent response) {
@@ -91,11 +119,48 @@ public class Main extends AppCompatActivity {
 
 
 
-                n = response.getData().toString();
+                String n = response.getData().toString();
                 Toast.makeText(this, n + " " + p, Toast.LENGTH_LONG).show();
-                tName.setText(n);
+                //tName.setText(n);
                 //tPrice.setText((int) p);
             }
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getId())
+        {
+            case R.id.btnHotDogMinus:
+                if (numHotDog > 0) {
+                    numHotDog -= 1;
+                }
+                hd.setText(Integer.toString(numHotDog));
+                break;
+            case R.id.btnHotDogPlus:
+                numHotDog += 1;
+                hd.setText(Integer.toString(numHotDog));
+                break;
+            case R.id.btnSodaMinus:
+                if (numSoda > 0) {
+                    numSoda -= 1;
+                }
+                s.setText(Integer.toString(numSoda));
+                break;
+            case R.id.btnSodaPlus:
+                numSoda += 1;
+                s.setText(Integer.toString(numSoda));
+                break;
+            case R.id.btnCandyMinus:
+                if (numCandy > 0) {
+                    numCandy -= 1;
+                }
+                c.setText(Integer.toString(numCandy));
+                break;
+            case R.id.btnCandyPlus:
+                numCandy += 1;
+                c.setText(Integer.toString(numCandy));
+                break;
         }
     }
 }
