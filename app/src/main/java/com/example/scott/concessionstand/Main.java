@@ -1,7 +1,10 @@
 package com.example.scott.concessionstand;
 
 import android.content.Intent;
+import android.icu.text.DecimalFormat;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +27,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
     TextView hd;
     TextView s;
     TextView c;
+    TextView rt;
     Button btnHDm;
     Button btnHDp;
     Button btnSp;
@@ -108,6 +112,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         hd = (TextView) findViewById(R.id.txtHotDogQuantity);
         s = (TextView) findViewById(R.id.txtSodaQuantity);
         c = (TextView) findViewById(R.id.txtCandyQuantity);
+        rt = (TextView) findViewById(R.id.txtRunningTotal);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent response) {
@@ -127,6 +132,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onClick(View v) {
         switch(v.getId())
@@ -136,6 +142,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
                     numHotDog -= 1;
                 }
                 hd.setText(Integer.toString(numHotDog));
+
                 break;
             case R.id.btnHotDogPlus:
                 numHotDog += 1;
@@ -162,5 +169,6 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
                 c.setText(Integer.toString(numCandy));
                 break;
         }
+        rt.setText("Running total - $" + (numHotDog*1.5 + numSoda*1 + numCandy*0.75));
     }
 }
