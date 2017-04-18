@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="updownbox">
+        <attr name="startValue" format="integer"></attr>
+        <attr name="itemName" format="string"></attr>
+        <attr name="itemPrice" format="string"></attr>
+    </declare-styleable>
+</resources>
